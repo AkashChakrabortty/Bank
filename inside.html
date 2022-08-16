@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After log in</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <section class="bg-gray-400	h-screen overflow-hidden">
+        <div class="bg-red-300	w-2/3 mx-auto h-80 mt-48 rounded overflow-hidden grid  grid-rows-2 gap-4 p-3"> 
+           <div class="grid grid-cols-3  gap-4 text-xl	text-center">
+           <div class="bg-cyan-400	rounded">Deposite Amount
+            <h1>$<span id="depo">00</span></h1>
+           </div>
+
+           <div class="bg-cyan-400 rounded">Withdraw Amount 
+            <h1>$<span id="withdraw">00</span></h1>
+           </div>
+           <div class="bg-cyan-400	rounded">Total Amount
+            <h1>$<span id="total">100.00</span></h1>
+           </div>
+           </div>
+
+           <div class="grid grid-cols-2 gap-4 mt-10">
+            <div>
+                <input id="depositeInput" class="w-full rounded mt-4 p-1" type="number" placeholder="Deposite Amount">
+                <button id="deposite-submit" class="bg-emerald-400 p-3 rounded mt-2 hover:bg-sky-700">Submit</button>
+            </div>
+            <div>
+                <input id="withdrawInput" class="w-full rounded mt-4 p-1" type="number" placeholder="Withdaw amount">
+                <button id="withdraw-submit" class="bg-emerald-400 p-3 rounded mt-2 hover:bg-sky-700">Submit</button>
+            </div>
+           </div>
+        </div>
+    </section>
+
+
+     <!-- js link -->
+    <script src="bank.js"></script>
+</body>
+</html>
