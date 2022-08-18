@@ -1,43 +1,57 @@
+function stringToIntInput(id){
+    const stringAmount = document.getElementById(id);
+    const intAmount = parseFloat(stringAmount.value);
+    return Math.abs(intAmount);
+}
+function stringToIntText(id){
+    const stringAmount = document.getElementById(id);
+    const intAmount = parseFloat(stringAmount.innerText);
+    return Math.abs(intAmount);
+}
+function setValue(id,value){
+   const update = document.getElementById(id);
+   return update.innerText = value;
+}
+function addAmount(value1,value2){
+    const add = value1 + value2;
+    return add;
+}
+function subtractionAmount(value1,value2){
+    const sub = value1 - value2;
+    return sub;
+}
+function clearInput(id){
+    const inputField =  document.getElementById(id);
+    return  inputField.value = " ";
+}
 // bank
 // deposite section
 const depositeSubmit = document.getElementById('deposite-submit');
 depositeSubmit.addEventListener('click',function(){
-    const depositeAmount = document.getElementById('depositeInput');
+    const depositeAmount = stringToIntInput('depositeInput');
+  
+    const previousDepostieAmount = stringToIntText('depo');
+    const updateDepositeAmount = addAmount (depositeAmount,previousDepostieAmount);
+    const updateDepo = setValue('depo', updateDepositeAmount);
 
-    const previousDepostieAmount = document.getElementById('depo');
+    const previousTotalAmount = stringToIntText('total');
+    const updateTotalAmount = addAmount(depositeAmount, previousTotalAmount);
+    const updateTotal = setValue('total', updateTotalAmount);
 
-    const previousTotalAmount = document.getElementById('total');
-    
-    const updateDepositeAmount = parseFloat(depositeAmount.value) + parseFloat(previousDepostieAmount.innerText);
-
-    const updateDepo = document.getElementById('depo');
-    updateDepo.innerText = updateDepositeAmount;
-
-    const updateTotalAmount = parseFloat(depositeAmount.value) + parseFloat(previousTotalAmount.innerText);
-
-    const updateTotal = document.getElementById('total');
-    updateTotal.innerText = updateTotalAmount;
-   
-    depositeAmount.value = " ";
+    const clear = clearInput('depositeInput');
 })
 // withdraw section
 const withdrawSubmit = document.getElementById('withdraw-submit');
 withdrawSubmit.addEventListener('click',function(){
-    const withdrawAmount = document.getElementById('withdrawInput');
-
-    const previousWithdrawAmount = document.getElementById('withdraw');
-
-    const previousTotalAmount = document.getElementById('total');
     
-    const updateWithdrawAmount = parseFloat(withdrawAmount.value) + parseFloat(previousWithdrawAmount.innerText);
+    const withdrawAmount = stringToIntInput('withdrawInput');
+    const previousWithdrawAmount = stringToIntText('withdraw');
+    const updateWithdrawAmount = addAmount (withdrawAmount,previousWithdrawAmount);
+    const updatewithdraw = setValue('withdraw', updateWithdrawAmount);
+  
+    const previousTotalAmount = stringToIntText('total');
+    const updateTotalAmount = subtractionAmount(previousTotalAmount,withdrawAmount);
+    const updateTotal = setValue('total', updateTotalAmount);
 
-    const updatewithdraw = document.getElementById('withdraw');
-    updatewithdraw.innerText = updateWithdrawAmount;
-
-    const updateTotalAmount = parseFloat(previousTotalAmount.innerText) - parseFloat(withdrawAmount.value) ;
-
-    const updateTotal = document.getElementById('total');
-    updateTotal.innerText = updateTotalAmount;
-   
-    withdrawAmount.value = " ";
+    const clear = clearInput('withdrawInput');
 })
